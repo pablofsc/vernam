@@ -5,8 +5,9 @@ var mc;
 
 window.onload = function () {
     document.getElementById("criptografar").addEventListener("click", () => {
+        m = prompt("Digite a mensagem a ser criptogradada");
+
         do {
-            m = prompt("Digite a mensagem a ser criptogradada");
             k = prompt("Digite a chave a ser usada");
         } while (k.length > m.length && !alert("A chave precisa ser menor que a mensagem."));
 
