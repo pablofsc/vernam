@@ -57,7 +57,7 @@ function desc(mensagemCriptografada, chave, chaveReinserida) {
     }
 
     setTimeout(() => {
-        document.getElementById("mensagemDescriptografada").innerHTML = `Mensagem obtida foi: ${mensagemDescriptografada.join(" ")}`;
+        document.getElementById("mensagemDescriptografada").innerHTML = `Mensagem obtida foi: ${mensagemDescriptografada.join("")}`;
     }, 50);
     if (chave !== chaveReinserida) {
         setTimeout(() => {
