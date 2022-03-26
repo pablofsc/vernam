@@ -5,17 +5,21 @@ var mc;
 
 window.onload = function () {
     document.getElementById("criptografar").addEventListener("click", () => {
-        m = prompt("Digite a mensagem a ser criptogradada");
-
-        do {
-            k = prompt("Digite a chave a ser usada");
-        } while (k.length > m.length && !alert("A chave precisa ser menor que a mensagem."));
-
+        m = document.getElementById("mensagem").value;
+        k = document.getElementById("chave").value;
+        if (k.length > m.length) {
+            alert("A chave precisa ser menor que a mensagem.");
+            return;
+        }
+        if (k.length === 0) {
+            alert("Insira uma chave");
+            return;
+        }
         mc = criptografar(m, k);
     });
 
     document.getElementById("descriptografar").addEventListener("click", () => {
-        desc(mc, k);
+        desc(mc, k, document.getElementById("chaveReinserida").value);
     });
 }
 
@@ -31,24 +35,39 @@ function criptografar(mensagem, chave) {
         j++;
     }
 
-    alert(mensagemCriptografada.join(" "));
+    setTimeout(() => {
+        document.getElementById("mensagemCrip").innerHTML = `Mensagem criptografada: ${mensagemCriptografada.join(" ")}`;
+        document.getElementById("mensagemCripCaixa").value = mensagemCriptografada.join(" ");
+    }, 50);
 
     return (mensagemCriptografada);
 }
 
-function desc(mensagemCriptografada, chave) {
+function desc(mensagemCriptografada, chave, chaveReinserida) {
     let mensagemDescriptografada = [];
     let j = 0;
 
     for (i = 0; i < mensagemCriptografada.length; i++) {
-        if (j >= chave.length) {
+        if (j >= chaveReinserida.length) {
             j = 0;
         }
-        let charCode = mensagemCriptografada[i] ^ chave[j].charCodeAt(0);
+        let charCode = mensagemCriptografada[i] ^ chaveReinserida[j].charCodeAt(0);
         mensagemDescriptografada.push(String.fromCharCode(charCode));
         j++;
     }
 
-    alert(mensagemDescriptografada.join(""));
-}
+    setTimeout(() => {
+        document.getElementById("mensagemDescriptografada").innerHTML = `Mensagem obtida foi: ${mensagemDescriptografada.join(" ")}`;
+    }, 50);
+    if (chave !== chaveReinserida) {
+        setTimeout(() => {
+            document.getElementById("chaveErro").innerHTML = `Mensagem obtida está errada porque a chave ${chaveReinserida} está errada`;
+        }, 50);
+    }
+    else {
+        setTimeout(() => {
+            document.getElementById("chaveErro").innerHTML = "";
+        }, 50);
+    }
 
+}
