@@ -11,21 +11,48 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
-<body class="container-fluid d-flex flex-column align-items-center justify-content-center vh-100">
-    <section class="text-center">
-        <div>
-            <input type="text" id="mensagem" value="" placeholder="Digite a mensagem a ser criptografada"
-                style="width: 100%;" />
-            <input type="text" id="chave" value="" placeholder="Digite a chave para criptografar"
-                style="width: 100%;" />
-            <button class="btn btn-primary w-auto my-1" id="criptografar">CRIPTOGRAFAR</button>
-            <br>
+<body class="container-fluid px-0" style="background-color: #EEEDDE;">
+    <section class="text-center pt-5">
+        <div class="align-items-center">
+            <div class="input-group row justify-content-center">
+                <div class="col-3"></div>
+                <div class="col-6 px-0">
+                    <input class="form-control rounded-0 border-secondary" type="text" id="mensagem" value=""
+                        placeholder="Digite a mensagem a ser criptografada" style="width: 100%;" />
+                    <input class="form-control rounded-0 border-secondary border-top-0" type="text" id="chave" value=""
+                        placeholder="Digite a chave para criptografar" style="width: 100%;" />
+                </div>
+                <div class="col-3 p-0 my-0">
+                    <button class="btn btn-dark w-auto my-0 d-flex justify-content-start rounded-0 px-3 pt-3"
+                        id="criptografar" style="height: 4.7em;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                            class="bi bi-lock-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
             <div id="mensagemCrip"></div>
-            <input type="text" id="mensagemCripCaixa" value="" placeholder="A mensagem criptografada aparecerá aqui"
-                style="width: 100%;" />
-            <input type="text" id="chaveReinserida" value="" placeholder="Re-digite a chave para descriptografar"
-                style="width: 100%;" />
-            <button class="btn btn-primary w-auto mb-1" id="descriptografar">DESCRIPTOGRAFAR</button>
+            <div class="input-group row justify-content-center pt-5">
+                <div class="col-3"></div>
+                <div class="col-6 px-0">
+                    <input class="form-control rounded-0 border-secondary" type="text" id="mensagemCripCaixa" value=""
+                        placeholder="A mensagem criptografada aparecerá aqui" style="width: 100%;" />
+                    <input class="form-control rounded-0 border-secondary" type="text" id="chaveReinserida" value=""
+                        placeholder="Re-digite a chave para descriptografar" style="width: 100%;" />
+                </div>
+                <div class="col-3 p-0 my-0">
+                    <button class="btn btn-dark w-auto my-0 d-flex justify-content-start rounded-0 px-3 pt-3"
+                        id="descriptografar" style="height: 4.75em" ;>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor"
+                            class="bi bi-unlock-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M11 1a2 2 0 0 0-2 2v4a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h5V3a3 3 0 0 1 6 0v4a.5.5 0 0 1-1 0V3a2 2 0 0 0-2-2z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
             <div id="mensagemDescriptografada"></div>
             <div id="chaveErro"></div>
         </div>
