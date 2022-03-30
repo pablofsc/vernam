@@ -1,25 +1,25 @@
-var m;
-var k;
+var mensagemOriginal;
+var chave;
 
-var mc;
+var mensagemCriptografada;
 
 window.onload = function () {
     document.getElementById("criptografar").addEventListener("click", () => {
-        m = document.getElementById("mensagem").value;
-        k = document.getElementById("chave").value;
-        if (k.length > m.length) {
+        mensagemOriginal = document.getElementById("mensagem").value;
+        chave = document.getElementById("chave").value;
+        if (chave.length > mensagemOriginal.length) {
             alert("A chave precisa ser menor que a mensagem.");
             return;
         }
-        if (k.length === 0) {
+        if (chave.length === 0) {
             alert("Insira uma chave");
             return;
         }
-        mc = criptografar(m, k);
+        mensagemCriptografada = criptografar(mensagemOriginal, chave);
     });
 
     document.getElementById("descriptografar").addEventListener("click", () => {
-        desc(mc, k, document.getElementById("chaveReinserida").value);
+        descriptografar(mensagemCriptografada, chave, document.getElementById("chaveReinserida").value);
     });
 }
 
@@ -43,7 +43,7 @@ function criptografar(mensagem, chave) {
     return (mensagemCriptografada);
 }
 
-function desc(mensagemCriptografada, chave, chaveReinserida) {
+function descriptografar(mensagemCriptografada, chave, chaveReinserida) {
     let mensagemDescriptografada = [];
     let j = 0;
 
@@ -57,11 +57,11 @@ function desc(mensagemCriptografada, chave, chaveReinserida) {
     }
 
     setTimeout(() => {
-        document.getElementById("mensagemDescriptografada").innerHTML = `Mensagem obtida foi: ${mensagemDescriptografada.join("")}`;
+        document.getElementById("mensagemDescriptografada").innerHTML = `Mensagem obtida: ${mensagemDescriptografada.join("")}`;
     }, 50);
     if (chave !== chaveReinserida) {
         setTimeout(() => {
-            document.getElementById("chaveErro").innerHTML = `Mensagem obtida está errada porque a chave ${chaveReinserida} está errada`;
+            document.getElementById("chaveErro").innerHTML = `A mensagem descriptografada está errada porque a chave "${chaveReinserida}" não é a correta`;
         }, 50);
     }
     else {
